@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+      text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="390" height="844" fill="#FAFAF8"/>
+
+  <!-- Status bar -->
+  <text x="32" y="20" font-size="12" font-weight="600" fill="#1A1A1A">9:41</text>
+
+  <!-- Top bar -->
+  <text x="24" y="68" font-size="20" font-weight="600" fill="#1A1A1A">Devebhyo Namaḥ</text>
+  <!-- Settings gear icon -->
+  <circle cx="354" cy="62" r="5" stroke="#1A1A1A" stroke-width="1.5" fill="none"/>
+  <path d="M354 53v2m0 14v2m-7.8-4.5l1.4-1.4m12.8-12.8l1.4-1.4m-18 7.2h2m14 0h2m-4.5 7.8l-1.4-1.4m-12.8-12.8l-1.4-1.4" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Search bar -->
+  <g transform="translate(24, 86)">
+    <rect x="0" y="0" width="296" height="44" rx="10" fill="#FFFFFF" stroke="#E8E4DF" stroke-width="1"/>
+    <!-- Search icon -->
+    <circle cx="22" cy="22" r="7" stroke="#9B9590" stroke-width="1.3" fill="none"/>
+    <line x1="27" y1="27" x2="31" y2="31" stroke="#9B9590" stroke-width="1.3" stroke-linecap="round"/>
+    <text x="40" y="27" font-size="13" fill="#9B9590">Search temples, deities, cities...</text>
+
+    <!-- Mic button -->
+    <rect x="304" y="0" width="44" height="44" rx="10" fill="#FFFFFF" stroke="#E8E4DF" stroke-width="1"/>
+    <rect x="322" y="10" width="8" height="14" rx="4" stroke="#C45B28" stroke-width="1.3" fill="none"/>
+    <path d="M318 20c0 4 3.5 6.5 8 6.5s8-2.5 8-6.5" stroke="#C45B28" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <line x1="326" y1="27" x2="326" y2="30" stroke="#C45B28" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="323" y1="30" x2="329" y2="30" stroke="#C45B28" stroke-width="1.3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Tab pills -->
+  <g transform="translate(24, 144)">
+    <!-- Temples (active) -->
+    <rect x="0" y="0" width="88" height="32" rx="16" fill="#FFFFFF" stroke="#C45B28" stroke-width="1"/>
+    <path d="M16 11l3 5h-6l3-5z" stroke="#C45B28" stroke-width="1" fill="none"/>
+    <line x1="12" y1="16" x2="12" y2="22" stroke="#C45B28" stroke-width="0.8"/>
+    <line x1="16" y1="16" x2="16" y2="22" stroke="#C45B28" stroke-width="0.8"/>
+    <line x1="20" y1="16" x2="20" y2="22" stroke="#C45B28" stroke-width="0.8"/>
+    <text x="38" y="21" font-size="12" font-weight="500" fill="#C45B28">Temples</text>
+
+    <!-- Priests -->
+    <rect x="96" y="0" width="80" height="32" rx="16" fill="#FFFFFF" stroke="#E8E4DF" stroke-width="1"/>
+    <circle cx="114" cy="12" r="4" stroke="#9B9590" stroke-width="1" fill="none"/>
+    <path d="M108 22c0-3 3-5.5 6-5.5s6 2.5 6 5.5" stroke="#9B9590" stroke-width="1" fill="none"/>
+    <text x="128" y="21" font-size="12" font-weight="500" fill="#9B9590">Priests</text>
+
+    <!-- Map -->
+    <rect x="184" y="0" width="65" height="32" rx="16" fill="#FFFFFF" stroke="#E8E4DF" stroke-width="1"/>
+    <path d="M200 10c0 0 5 4.5 5 7.5s-2.2 4-5 7.5" stroke="#9B9590" stroke-width="1" fill="none"/>
+    <circle cx="200" cy="17" r="2" stroke="#9B9590" stroke-width="1" fill="none"/>
+    <text x="213" y="21" font-size="12" font-weight="500" fill="#9B9590">Map</text>
+  </g>
+
+  <!-- State filter chips -->
+  <g transform="translate(24, 190)">
+    <rect x="0" y="0" width="36" height="24" rx="12" fill="#C45B28"/>
+    <text x="18" y="16" font-size="11" font-weight="500" fill="#FFFFFF" text-anchor="middle">All</text>
+
+    <rect x="44" y="0" width="80" height="24" rx="12" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="84" y="16" font-size="11" fill="#6B6560" text-anchor="middle">Telangana</text>
+
+    <rect x="132" y="0" width="105" height="24" rx="12" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="184" y="16" font-size="11" fill="#6B6560" text-anchor="middle">Andhra Pradesh</text>
+
+    <rect x="245" y="0" width="80" height="24" rx="12" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="285" y="16" font-size="11" fill="#6B6560" text-anchor="middle">Tamil Nadu</text>
+  </g>
+
+  <!-- Temple list -->
+  <!-- Temple 1 -->
+  <g transform="translate(24, 236)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Tirumala Venkateswara Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Lord Venkateswara</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Tirupati, Andhra Pradesh</text>
+    </g>
+    <!-- Chevron -->
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <line x1="24" y1="296" x2="366" y2="296" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple 2 -->
+  <g transform="translate(24, 308)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Meenakshi Amman Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Goddess Meenakshi, Lord Sundareswarar</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Madurai, Tamil Nadu</text>
+    </g>
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <line x1="24" y1="368" x2="366" y2="368" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple 3 -->
+  <g transform="translate(24, 380)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Siddhivinayak Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Lord Ganesha</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Mumbai, Maharashtra</text>
+    </g>
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <line x1="24" y1="440" x2="366" y2="440" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple 4 -->
+  <g transform="translate(24, 452)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Sri Chamundeshwari Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Goddess Chamundeshwari</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Mysore, Karnataka</text>
+    </g>
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <line x1="24" y1="512" x2="366" y2="512" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple 5 -->
+  <g transform="translate(24, 524)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Yadagirigutta Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Lord Narasimha</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Yadagirigutta, Telangana</text>
+    </g>
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <line x1="24" y1="584" x2="366" y2="584" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple 6 -->
+  <g transform="translate(24, 596)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Brihadeeswarar Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Lord Shiva</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Thanjavur, Tamil Nadu</text>
+    </g>
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <line x1="24" y1="656" x2="366" y2="656" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple 7 (partially visible) -->
+  <g transform="translate(24, 668)">
+    <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">Ramanathaswamy Temple</text>
+    <text x="0" y="34" font-size="13" fill="#6B6560">Lord Shiva</text>
+    <g transform="translate(0, 42)">
+      <path d="M4 10c0-3 2.5-5 4-5s4 2 4 5-4 8-4 8-4-5-4-8z" stroke="#9B9590" stroke-width="1" fill="none" transform="scale(0.7)"/>
+      <text x="12" y="9" font-size="11" fill="#9B9590">Rameswaram, Tamil Nadu</text>
+    </g>
+    <path d="M340 24l6 6-6 6" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Scroll fade -->
+  <rect x="0" y="740" width="390" height="60" fill="url(#fadeGrad)"/>
+  <defs>
+    <linearGradient id="fadeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFAF8" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FAFAF8" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Home indicator -->
+  <rect x="147" y="822" width="96" height="4" rx="2" fill="#1A1A1A" opacity="0.2"/>
+</svg>

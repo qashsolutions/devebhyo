@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devebhyo -- Screen Mockups</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F5F3F0;
+      color: #1A1A1A;
+      padding: 48px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #6B6560;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    header .badge-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    header .badge {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #6B6560;
+      background: #FFFFFF;
+      border: 1px solid #E8E4DF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      padding: 16px 0 32px 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .screen {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .screen-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6B6560;
+      text-align: center;
+    }
+
+    .screen-sublabel {
+      font-size: 11px;
+      color: #9B9590;
+      text-align: center;
+      max-width: 200px;
+    }
+
+    .phone-frame {
+      width: 290px;
+      height: 628px;
+      border-radius: 36px;
+      background: #FFFFFF;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.06),
+        0 8px 24px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(0,0,0,0.04);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-frame img,
+    .phone-frame object {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    .flow-arrow {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      color: #C45B28;
+      font-size: 24px;
+      opacity: 0.4;
+      padding-top: 48px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #C45B28;
+      margin-bottom: 16px;
+      margin-top: 48px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid #E8E4DF;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #9B9590;
+      line-height: 1.8;
+    }
+
+    footer .highlight {
+      color: #C45B28;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 16px; }
+      header h1 { font-size: 28px; }
+      .phone-frame { width: 260px; height: 564px; }
+      .gallery { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Devebhyo Namah</h1>
+    <p>Connect with temples and priests across South India. 10 screen prototype for Android, iOS, and Web.</p>
+    <div class="badge-row">
+      <span class="badge">Telangana</span>
+      <span class="badge">Andhra Pradesh</span>
+      <span class="badge">Tamil Nadu</span>
+      <span class="badge">Karnataka</span>
+      <span class="badge">Maharashtra</span>
+    </div>
+  </header>
+
+  <div class="section-label">Onboarding Flow</div>
+  <div class="gallery">
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="01-welcome.svg" alt="Welcome Screen" />
+      </div>
+      <div class="screen-label">01. Welcome</div>
+      <div class="screen-sublabel">Entry point, feature highlights</div>
+    </div>
+
+    <div class="flow-arrow">&#8594;</div>
+
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="02-login.svg" alt="Phone Login Screen" />
+      </div>
+      <div class="screen-label">02. Phone Login + OTP</div>
+      <div class="screen-sublabel">+91, voice input hint, 6-digit OTP</div>
+    </div>
+
+    <div class="flow-arrow">&#8594;</div>
+
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="03-profile-setup.svg" alt="Profile Setup Screen" />
+      </div>
+      <div class="screen-label">03. Profile Setup</div>
+      <div class="screen-sublabel">DOB required, conditional fields by age</div>
+    </div>
+  </div>
+
+  <div class="section-label">Core Experience</div>
+  <div class="gallery">
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="04-home.svg" alt="Home Screen" />
+      </div>
+      <div class="screen-label">04. Home</div>
+      <div class="screen-sublabel">Temple list, search, state filters, mic</div>
+    </div>
+
+    <div class="flow-arrow">&#8594;</div>
+
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="05-temple-detail.svg" alt="Temple Detail Screen" />
+      </div>
+      <div class="screen-label">05. Temple Detail</div>
+      <div class="screen-sublabel">Sevas, timings, 100% donation</div>
+    </div>
+
+    <div class="flow-arrow">&#8594;</div>
+
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="06-map.svg" alt="Map View Screen" />
+      </div>
+      <div class="screen-label">06. Map View</div>
+      <div class="screen-sublabel">India map, 20 temple pins</div>
+    </div>
+  </div>
+
+  <div class="section-label">Priest Connection</div>
+  <div class="gallery">
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="07-priests.svg" alt="Priest Listing Screen" />
+      </div>
+      <div class="screen-label">07. Priest Listing</div>
+      <div class="screen-sublabel">By city/state, ratings, specializations</div>
+    </div>
+
+    <div class="flow-arrow">&#8594;</div>
+
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="08-priest-detail.svg" alt="Priest Detail Screen" />
+      </div>
+      <div class="screen-label">08. Priest Detail</div>
+      <div class="screen-sublabel">1:1 booking, date + time picker</div>
+    </div>
+  </div>
+
+  <div class="section-label">Booking + Settings</div>
+  <div class="gallery">
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="09-service-payment.svg" alt="Service Payment Screen" />
+      </div>
+      <div class="screen-label">09. Service / Payment</div>
+      <div class="screen-sublabel">Summary, fees, confirmation</div>
+    </div>
+
+    <div class="flow-arrow">&#8594;</div>
+
+    <div class="screen">
+      <div class="phone-frame">
+        <img src="10-settings.svg" alt="Settings Screen" />
+      </div>
+      <div class="screen-label">10. Settings</div>
+      <div class="screen-sublabel">Profile, language, delete account</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      <span class="highlight">20 temples</span> across 5 South Indian states<br>
+      <span class="highlight">12 priests</span> with specializations and ratings<br>
+      <span class="highlight">Voice-first</span> via Sarvam AI for Indian languages<br>
+      <span class="highlight">100% donations</span> go directly to the temple<br>
+      Platform charges only on additional services/sevas
+    </p>
+  </footer>
+
+</body>
+</html>

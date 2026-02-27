@@ -127,6 +127,13 @@ export default function MapScreen() {
             pins={allPins}
             selectedPinId={selectedId}
             onPinPress={handlePinPress}
+            highlightedStates={[
+              'Telangana',
+              'Andhra Pradesh',
+              'Tamil Nadu',
+              'Karnataka',
+              'Maharashtra',
+            ]}
           />
         </View>
 

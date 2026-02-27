@@ -1,174 +1,124 @@
-// Screen 4: Home - Temple List (minimal, show only what's asked)
-import React, { useState } from 'react';
+// Screen 4: Home - Minimal, voice-first, location-aware
+// Think screenless: the engine is powerful, the surface is quiet.
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  FlatList,
   TouchableOpacity,
-  TextInput,
+  Dimensions,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors, Typography, Spacing, Radius } from '../src/constants/theme';
-import { temples, states } from '../src/data/temples';
+import { temples } from '../src/data/temples';
+import { priests } from '../src/data/priests';
+import { sortByDistance, formatDistance } from '../src/utils/geo';
 import {
-  SearchIcon,
-  TempleIcon,
-  PriestIcon,
-  MapPinIcon,
-  SettingsIcon,
-  ChevronRightIcon,
   MicIcon,
+  MapPinIcon,
+  ChevronRightIcon,
+  SettingsIcon,
 } from '../src/components/Icons';
-import { Temple } from '../src/types';
+import { useApp } from '../src/context/AppContext';
 
-type Tab = 'temples' | 'priests' | 'map';
+const { width: screenWidth } = Dimensions.get('window');
+
+// Default: Hyderabad (demo fallback)
+const DEFAULT_LAT = 17.385;
+const DEFAULT_LNG = 78.4867;
 
 export default function HomeScreen() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<Tab>('temples');
-  const [search, setSearch] = useState('');
-  const [selectedState, setSelectedState] = useState<string>('');
+  const { user } = useApp();
+  const [userLat] = useState(user?.location?.latitude ?? DEFAULT_LAT);
+  const [userLng] = useState(user?.location?.longitude ?? DEFAULT_LNG);
 
-  const filteredTemples = temples.filter((t) => {
-    const matchSearch =
-      !search ||
-      t.name.toLowerCase().includes(search.toLowerCase()) ||
-      t.city.toLowerCase().includes(search.toLowerCase()) ||
-      t.deity.toLowerCase().includes(search.toLowerCase());
-    const matchState = !selectedState || t.state === selectedState;
-    return matchSearch && matchState;
-  });
+  // Nearest 3 temples, sorted by distance
+  const nearestTemples = sortByDistance(temples, userLat, userLng).slice(0, 3);
 
-  const renderTemple = ({ item }: { item: Temple }) => (
-    <TouchableOpacity
-      style={styles.templeCard}
-      onPress={() => router.push(`/temple/${item.id}`)}
-      activeOpacity={0.7}
-    >
-      <View style={styles.templeInfo}>
-        <Text style={styles.templeName} numberOfLines={1}>
-          {item.name}
-        </Text>
-        <Text style={styles.templeDeity}>{item.deity}</Text>
-        <View style={styles.locationRow}>
-          <MapPinIcon size={13} color={Colors.textTertiary} />
-          <Text style={styles.locationText}>
-            {item.city}, {item.state}
-          </Text>
-        </View>
-      </View>
-      <ChevronRightIcon size={20} color={Colors.textTertiary} />
-    </TouchableOpacity>
-  );
+  // Nearest available priest
+  const nearestPriest = sortByDistance(
+    priests.filter((p) => p.available),
+    userLat,
+    userLng
+  )[0];
 
   return (
     <View style={styles.container}>
-      {/* Top bar */}
+      {/* Top bar -- just branding + settings */}
       <View style={styles.topBar}>
-        <View>
-          <Text style={styles.greeting}>Devebhyo Namaḥ</Text>
-        </View>
+        <Text style={styles.brand}>Devebhyo</Text>
         <TouchableOpacity
           onPress={() => router.push('/settings')}
           hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
         >
-          <SettingsIcon size={22} color={Colors.text} />
+          <SettingsIcon size={20} color={Colors.textTertiary} />
         </TouchableOpacity>
       </View>
 
-      {/* Search */}
-      <View style={styles.searchRow}>
-        <View style={styles.searchBar}>
-          <SearchIcon size={18} color={Colors.textTertiary} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search temples, deities, cities..."
-            placeholderTextColor={Colors.textTertiary}
-            value={search}
-            onChangeText={setSearch}
-          />
-        </View>
-        <TouchableOpacity style={styles.micButton}>
-          <MicIcon size={20} color={Colors.primary} />
+      {/* Center: voice-first mic -- the primary interaction */}
+      <View style={styles.center}>
+        <TouchableOpacity style={styles.micCircle} activeOpacity={0.8}>
+          <MicIcon size={32} color={Colors.white} />
         </TouchableOpacity>
+        <Text style={styles.micHint}>Tap to speak in your language</Text>
       </View>
 
-      {/* Tabs */}
-      <View style={styles.tabs}>
-        {([
-          { key: 'temples' as Tab, label: 'Temples', icon: TempleIcon },
-          { key: 'priests' as Tab, label: 'Priests', icon: PriestIcon },
-          { key: 'map' as Tab, label: 'Map', icon: MapPinIcon },
-        ]).map(({ key, label, icon: Icon }) => (
+      {/* Bottom: near you -- only what's relevant */}
+      <View style={styles.bottom}>
+        {/* Nearest temple */}
+        <Text style={styles.sectionLabel}>NEAR YOU</Text>
+
+        {nearestTemples.map((temple, i) => (
           <TouchableOpacity
-            key={key}
-            style={[styles.tab, activeTab === key && styles.tabActive]}
-            onPress={() => {
-              if (key === 'priests') router.push('/priests');
-              else if (key === 'map') router.push('/map');
-              else setActiveTab(key);
-            }}
+            key={temple.id}
+            style={[styles.nearRow, i === 0 && styles.nearRowFirst]}
+            onPress={() => router.push(`/temple/${temple.id}`)}
+            activeOpacity={0.7}
           >
-            <Icon
-              size={16}
-              color={activeTab === key ? Colors.primary : Colors.textTertiary}
-            />
-            <Text
-              style={[
-                styles.tabText,
-                activeTab === key && styles.tabTextActive,
-              ]}
-            >
-              {label}
-            </Text>
+            <View style={[styles.dot, { backgroundColor: '#1A3A5C' }]} />
+            <View style={styles.nearInfo}>
+              <Text style={styles.nearName} numberOfLines={1}>
+                {temple.name.replace(/Temple|Mandir|Sri /g, '').trim()}
+              </Text>
+              <Text style={styles.nearMeta}>
+                {temple.city} -- {formatDistance(temple.distance)}
+              </Text>
+            </View>
+            <ChevronRightIcon size={16} color={Colors.textTertiary} />
           </TouchableOpacity>
         ))}
-      </View>
 
-      {/* State filter chips */}
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={['', ...states]}
-        keyExtractor={(item) => item || 'all'}
-        contentContainerStyle={styles.chipList}
-        renderItem={({ item }) => (
+        {/* Nearest priest */}
+        {nearestPriest && (
           <TouchableOpacity
-            style={[
-              styles.chip,
-              (item === '' ? !selectedState : selectedState === item) &&
-                styles.chipActive,
-            ]}
-            onPress={() => setSelectedState(item)}
+            style={styles.nearRow}
+            onPress={() => router.push(`/priest/${nearestPriest.id}`)}
+            activeOpacity={0.7}
           >
-            <Text
-              style={[
-                styles.chipText,
-                (item === '' ? !selectedState : selectedState === item) &&
-                  styles.chipTextActive,
-              ]}
-            >
-              {item || 'All'}
-            </Text>
+            <View style={[styles.dot, { backgroundColor: '#C45B28' }]} />
+            <View style={styles.nearInfo}>
+              <Text style={styles.nearName} numberOfLines={1}>
+                {nearestPriest.name}
+              </Text>
+              <Text style={styles.nearMeta}>
+                {nearestPriest.city} -- {formatDistance(nearestPriest.distance)}
+              </Text>
+            </View>
+            <ChevronRightIcon size={16} color={Colors.textTertiary} />
           </TouchableOpacity>
         )}
-      />
 
-      {/* Temple list */}
-      <FlatList
-        data={filteredTemples}
-        keyExtractor={(item) => item.id}
-        renderItem={renderTemple}
-        contentContainerStyle={styles.list}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
-        ListEmptyComponent={
-          <View style={styles.empty}>
-            <Text style={styles.emptyText}>No temples found</Text>
-          </View>
-        }
-      />
+        {/* Explore map -- the discovery surface */}
+        <TouchableOpacity
+          style={styles.mapEntry}
+          onPress={() => router.push('/map')}
+          activeOpacity={0.7}
+        >
+          <MapPinIcon size={16} color={Colors.textSecondary} />
+          <Text style={styles.mapEntryText}>Explore map</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -184,138 +134,92 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 56,
     paddingHorizontal: Spacing.xl,
-    paddingBottom: Spacing.md,
   },
-  greeting: {
-    ...Typography.heading,
-    color: Colors.text,
+  brand: {
+    ...Typography.label,
+    color: Colors.textTertiary,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    fontSize: 12,
   },
-  searchRow: {
-    flexDirection: 'row',
-    paddingHorizontal: Spacing.xl,
-    gap: Spacing.sm,
-    marginBottom: Spacing.md,
-  },
-  searchBar: {
+
+  // Center: mic
+  center: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 44,
-    backgroundColor: Colors.white,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    paddingHorizontal: Spacing.md,
-    gap: Spacing.sm,
-  },
-  searchInput: {
-    flex: 1,
-    ...Typography.bodySmall,
-    color: Colors.text,
-    height: 44,
-  },
-  micButton: {
-    width: 44,
-    height: 44,
-    backgroundColor: Colors.white,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.border,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom: 40,
   },
-  tabs: {
-    flexDirection: 'row',
-    paddingHorizontal: Spacing.xl,
-    gap: Spacing.sm,
-    marginBottom: Spacing.md,
-  },
-  tab: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.xs,
-    paddingHorizontal: Spacing.lg,
-    paddingVertical: Spacing.sm,
-    borderRadius: Radius.full,
-    backgroundColor: Colors.white,
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  tabActive: {
-    borderColor: Colors.primary,
-    backgroundColor: Colors.white,
-  },
-  tabText: {
-    ...Typography.labelSmall,
-    color: Colors.textTertiary,
-  },
-  tabTextActive: {
-    color: Colors.primary,
-  },
-  chipList: {
-    paddingHorizontal: Spacing.xl,
-    gap: Spacing.sm,
-    marginBottom: Spacing.md,
-  },
-  chip: {
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs + 1,
-    borderRadius: Radius.full,
-    backgroundColor: Colors.white,
-    borderWidth: 1,
-    borderColor: Colors.borderLight,
-  },
-  chipActive: {
+  micCircle: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     backgroundColor: Colors.primary,
-    borderColor: Colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // subtle shadow
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    elevation: 6,
   },
-  chipText: {
-    ...Typography.caption,
-    color: Colors.textSecondary,
+  micHint: {
+    ...Typography.bodySmall,
+    color: Colors.textTertiary,
+    marginTop: Spacing.lg,
   },
-  chipTextActive: {
-    color: Colors.white,
-  },
-  list: {
+
+  // Bottom: near you
+  bottom: {
     paddingHorizontal: Spacing.xl,
     paddingBottom: 40,
   },
-  templeCard: {
+  sectionLabel: {
+    ...Typography.caption,
+    color: Colors.textTertiary,
+    letterSpacing: 1,
+    marginBottom: Spacing.md,
+  },
+  nearRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: Spacing.lg,
+    paddingVertical: Spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: Colors.borderLight,
+    gap: Spacing.md,
   },
-  templeInfo: {
+  nearRowFirst: {
+    borderTopWidth: 0,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+  nearInfo: {
     flex: 1,
-    gap: Spacing.xs,
+    gap: 1,
   },
-  templeName: {
-    ...Typography.subheading,
+  nearName: {
+    ...Typography.label,
     color: Colors.text,
+    fontSize: 14,
   },
-  templeDeity: {
-    ...Typography.bodySmall,
-    color: Colors.textSecondary,
-  },
-  locationRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  locationText: {
+  nearMeta: {
     ...Typography.caption,
     color: Colors.textTertiary,
   },
-  separator: {
-    height: 1,
-    backgroundColor: Colors.borderLight,
-  },
-  empty: {
-    paddingVertical: Spacing.xxxl,
+  mapEntry: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.sm,
+    paddingVertical: Spacing.lg,
+    marginTop: Spacing.sm,
   },
-  emptyText: {
-    ...Typography.body,
-    color: Colors.textTertiary,
+  mapEntryText: {
+    ...Typography.labelSmall,
+    color: Colors.textSecondary,
   },
 });

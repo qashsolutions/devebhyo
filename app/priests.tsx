@@ -1,5 +1,5 @@
-// Screen 7: Priest Listing by City/State
-import React, { useState } from 'react';
+// Screen 7: Priest Listing - sorted by distance from user
+import React from 'react';
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'expo-router';
 import { Colors, Typography, Spacing, Radius } from '../src/constants/theme';
 import { priests } from '../src/data/priests';
-import { states } from '../src/data/temples';
+import { sortByDistance, formatDistance } from '../src/utils/geo';
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -18,22 +18,27 @@ import {
   MapPinIcon,
 } from '../src/components/Icons';
 import { Priest } from '../src/types';
+import { useApp } from '../src/context/AppContext';
+
+const DEFAULT_LAT = 17.385;
+const DEFAULT_LNG = 78.4867;
+
+type PriestWithDistance = Priest & { distance: number };
 
 export default function PriestsScreen() {
   const router = useRouter();
-  const [selectedState, setSelectedState] = useState('');
+  const { user } = useApp();
+  const userLat = user?.location?.latitude ?? DEFAULT_LAT;
+  const userLng = user?.location?.longitude ?? DEFAULT_LNG;
 
-  const filteredPriests = selectedState
-    ? priests.filter((p) => p.state === selectedState)
-    : priests;
+  const sortedPriests = sortByDistance(priests, userLat, userLng);
 
-  const renderPriest = ({ item }: { item: Priest }) => (
+  const renderPriest = ({ item }: { item: PriestWithDistance }) => (
     <TouchableOpacity
       style={styles.priestCard}
       onPress={() => router.push(`/priest/${item.id}`)}
       activeOpacity={0.7}
     >
-      {/* Initials avatar */}
       <View style={styles.avatar}>
         <Text style={styles.avatarText}>
           {item.name
@@ -51,16 +56,14 @@ export default function PriestsScreen() {
         <View style={styles.metaRow}>
           <MapPinIcon size={12} color={Colors.textTertiary} />
           <Text style={styles.metaText}>
-            {item.city}, {item.state}
+            {item.city} -- {formatDistance(item.distance)}
           </Text>
         </View>
         <View style={styles.metaRow}>
           <StarIcon size={12} color={Colors.gold} />
-          <Text style={styles.metaText}>
-            {item.rating} / 5.0
-          </Text>
+          <Text style={styles.metaText}>{item.rating}</Text>
           <Text style={styles.metaDot}> -- </Text>
-          <Text style={styles.metaText}>{item.experience} yrs exp.</Text>
+          <Text style={styles.metaText}>{item.experience} yrs</Text>
         </View>
         <View style={styles.specRow}>
           {item.specializations.slice(0, 2).map((s) => (
@@ -88,7 +91,6 @@ export default function PriestsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => router.back()}
@@ -100,51 +102,15 @@ export default function PriestsScreen() {
         <View style={{ width: 24 }} />
       </View>
 
-      <Text style={styles.subtitle}>
-        Book 1:1 premium consultation time
-      </Text>
-
-      {/* State filter */}
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={['', ...states]}
-        keyExtractor={(item) => item || 'all'}
-        contentContainerStyle={styles.chipList}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={[
-              styles.chip,
-              (item === '' ? !selectedState : selectedState === item) &&
-                styles.chipActive,
-            ]}
-            onPress={() => setSelectedState(item)}
-          >
-            <Text
-              style={[
-                styles.chipText,
-                (item === '' ? !selectedState : selectedState === item) &&
-                  styles.chipTextActive,
-              ]}
-            >
-              {item || 'All States'}
-            </Text>
-          </TouchableOpacity>
-        )}
-      />
+      <Text style={styles.subtitle}>Nearest to you first</Text>
 
       <FlatList
-        data={filteredPriests}
+        data={sortedPriests}
         keyExtractor={(item) => item.id}
         renderItem={renderPriest}
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        ListEmptyComponent={
-          <View style={styles.empty}>
-            <Text style={styles.emptyText}>No priests found in this state</Text>
-          </View>
-        }
       />
     </View>
   );
@@ -168,34 +134,11 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
   },
   subtitle: {
-    ...Typography.bodySmall,
+    ...Typography.caption,
     color: Colors.textTertiary,
     paddingHorizontal: Spacing.xl,
     marginBottom: Spacing.lg,
-  },
-  chipList: {
-    paddingHorizontal: Spacing.xl,
-    gap: Spacing.sm,
-    marginBottom: Spacing.md,
-  },
-  chip: {
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs + 1,
-    borderRadius: Radius.full,
-    backgroundColor: Colors.white,
-    borderWidth: 1,
-    borderColor: Colors.borderLight,
-  },
-  chipActive: {
-    backgroundColor: Colors.primary,
-    borderColor: Colors.primary,
-  },
-  chipText: {
-    ...Typography.caption,
-    color: Colors.textSecondary,
-  },
-  chipTextActive: {
-    color: Colors.white,
+    letterSpacing: 0.3,
   },
   list: {
     paddingHorizontal: Spacing.xl,
@@ -285,13 +228,5 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: Colors.borderLight,
-  },
-  empty: {
-    paddingVertical: Spacing.xxxl,
-    alignItems: 'center',
-  },
-  emptyText: {
-    ...Typography.body,
-    color: Colors.textTertiary,
   },
 });

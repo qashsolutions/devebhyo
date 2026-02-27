@@ -1,4 +1,4 @@
-// Screen 6: Map View - India map with temple pins
+// Screen 6: Map - temples (dark blue) + priests (saffron), tap to select
 import React, { useState } from 'react';
 import {
   View,
@@ -10,30 +10,59 @@ import {
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { Colors, Typography, Spacing, Radius } from '../src/constants/theme';
-import { IndiaMap } from '../src/components/IndiaMap';
+import { IndiaMap, MapPin } from '../src/components/IndiaMap';
 import { temples } from '../src/data/temples';
+import { priests } from '../src/data/priests';
 import {
   ChevronLeftIcon,
-  MapPinIcon,
   ChevronRightIcon,
   ClockIcon,
+  MapPinIcon,
+  StarIcon,
 } from '../src/components/Icons';
 
 const { width: screenWidth } = Dimensions.get('window');
+
+type FilterMode = 'all' | 'temples' | 'priests';
 
 export default function MapScreen() {
   const router = useRouter();
   const { highlight } = useLocalSearchParams<{ highlight?: string }>();
   const [selectedId, setSelectedId] = useState<string>(highlight || '');
+  const [filter, setFilter] = useState<FilterMode>('all');
 
-  const pins = temples.map((t) => ({
+  // Build pins from both data sets
+  const templePins: MapPin[] = temples.map((t) => ({
     id: t.id,
     latitude: t.latitude,
     longitude: t.longitude,
     label: t.city,
+    type: 'temple' as const,
   }));
 
+  const priestPins: MapPin[] = priests.map((p) => ({
+    id: p.id,
+    latitude: p.latitude,
+    longitude: p.longitude,
+    label: p.city,
+    type: 'priest' as const,
+  }));
+
+  const allPins =
+    filter === 'temples'
+      ? templePins
+      : filter === 'priests'
+      ? priestPins
+      : [...templePins, ...priestPins];
+
+  // Find selected item
   const selectedTemple = temples.find((t) => t.id === selectedId);
+  const selectedPriest = priests.find((p) => p.id === selectedId);
+  const selectedItem = selectedTemple || selectedPriest;
+
+  const handlePinPress = (id: string) => {
+    setSelectedId(id === selectedId ? '' : id);
+  };
 
   return (
     <View style={styles.container}>
@@ -45,105 +74,140 @@ export default function MapScreen() {
         >
           <ChevronLeftIcon size={24} color={Colors.text} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Temple Map</Text>
         <View style={{ width: 24 }} />
+      </View>
+
+      {/* Filter row */}
+      <View style={styles.filterRow}>
+        {(['all', 'temples', 'priests'] as FilterMode[]).map((mode) => (
+          <TouchableOpacity
+            key={mode}
+            style={[styles.filterChip, filter === mode && styles.filterChipActive]}
+            onPress={() => {
+              setFilter(mode);
+              setSelectedId('');
+            }}
+          >
+            {mode !== 'all' && (
+              <View
+                style={[
+                  styles.filterDot,
+                  {
+                    backgroundColor:
+                      mode === 'temples' ? '#1A3A5C' : '#C45B28',
+                  },
+                ]}
+              />
+            )}
+            <Text
+              style={[
+                styles.filterText,
+                filter === mode && styles.filterTextActive,
+              ]}
+            >
+              {mode === 'all'
+                ? 'All'
+                : mode === 'temples'
+                ? 'Temples'
+                : 'Priests'}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
       <ScrollView
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* State count summary */}
-        <View style={styles.summaryRow}>
-          <View style={styles.summaryItem}>
-            <Text style={styles.summaryNumber}>20</Text>
-            <Text style={styles.summaryLabel}>Temples</Text>
-          </View>
-          <View style={styles.summaryDivider} />
-          <View style={styles.summaryItem}>
-            <Text style={styles.summaryNumber}>5</Text>
-            <Text style={styles.summaryLabel}>States</Text>
-          </View>
-          <View style={styles.summaryDivider} />
-          <View style={styles.summaryItem}>
-            <Text style={styles.summaryNumber}>12</Text>
-            <Text style={styles.summaryLabel}>Cities</Text>
-          </View>
-        </View>
-
         {/* Map */}
         <View style={styles.mapContainer}>
           <IndiaMap
             width={screenWidth - 48}
-            height={400}
-            pins={pins}
+            height={440}
+            pins={allPins}
             selectedPinId={selectedId}
-            onPinPress={(id) => setSelectedId(id === selectedId ? '' : id)}
+            onPinPress={handlePinPress}
           />
         </View>
 
-        {/* Selected temple info card */}
+        {/* Selected card */}
         {selectedTemple && (
           <TouchableOpacity
-            style={styles.selectedCard}
+            style={styles.card}
             onPress={() => router.push(`/temple/${selectedTemple.id}`)}
             activeOpacity={0.7}
           >
-            <View style={styles.selectedInfo}>
-              <Text style={styles.selectedName} numberOfLines={1}>
+            <View style={[styles.cardDot, { backgroundColor: '#1A3A5C' }]} />
+            <View style={styles.cardInfo}>
+              <Text style={styles.cardName} numberOfLines={1}>
                 {selectedTemple.name}
               </Text>
-              <Text style={styles.selectedDeity}>
-                {selectedTemple.deity}
-              </Text>
-              <View style={styles.selectedMeta}>
-                <MapPinIcon size={12} color={Colors.textTertiary} />
-                <Text style={styles.selectedLocation}>
+              <Text style={styles.cardDeity}>{selectedTemple.deity}</Text>
+              <View style={styles.cardMeta}>
+                <MapPinIcon size={11} color={Colors.textTertiary} />
+                <Text style={styles.cardMetaText}>
                   {selectedTemple.city}, {selectedTemple.state}
                 </Text>
               </View>
-              <View style={styles.selectedMeta}>
-                <ClockIcon size={12} color={Colors.textTertiary} />
-                <Text style={styles.selectedLocation}>
+              <View style={styles.cardMeta}>
+                <ClockIcon size={11} color={Colors.textTertiary} />
+                <Text style={styles.cardMetaText}>
                   {selectedTemple.timings}
                 </Text>
               </View>
             </View>
-            <ChevronRightIcon size={20} color={Colors.textTertiary} />
+            <ChevronRightIcon size={18} color={Colors.textTertiary} />
           </TouchableOpacity>
         )}
 
-        {!selectedTemple && (
-          <View style={styles.hint}>
-            <MapPinIcon size={16} color={Colors.textTertiary} />
-            <Text style={styles.hintText}>
-              Tap a pin on the map to see temple details
-            </Text>
-          </View>
+        {selectedPriest && (
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => router.push(`/priest/${selectedPriest.id}`)}
+            activeOpacity={0.7}
+          >
+            <View style={[styles.cardDot, { backgroundColor: '#C45B28' }]} />
+            <View style={styles.cardInfo}>
+              <Text style={styles.cardName} numberOfLines={1}>
+                {selectedPriest.name}
+              </Text>
+              <View style={styles.cardMeta}>
+                <MapPinIcon size={11} color={Colors.textTertiary} />
+                <Text style={styles.cardMetaText}>
+                  {selectedPriest.city}, {selectedPriest.state}
+                </Text>
+              </View>
+              <View style={styles.cardMeta}>
+                <StarIcon size={11} color={Colors.gold} />
+                <Text style={styles.cardMetaText}>
+                  {selectedPriest.rating} -- {selectedPriest.experience} yrs
+                </Text>
+                <Text style={styles.cardPrice}>
+                  {'\u20B9'}{selectedPriest.premiumRate}/session
+                </Text>
+              </View>
+            </View>
+            <ChevronRightIcon size={18} color={Colors.textTertiary} />
+          </TouchableOpacity>
+        )}
+
+        {!selectedItem && (
+          <Text style={styles.hint}>Tap a pin to see details</Text>
         )}
 
         {/* Legend */}
         <View style={styles.legend}>
           <View style={styles.legendItem}>
-            <View
-              style={[styles.legendDot, { backgroundColor: Colors.primary }]}
-            />
-            <Text style={styles.legendText}>Temple location</Text>
+            <View style={[styles.legendDot, { backgroundColor: '#1A3A5C' }]} />
+            <Text style={styles.legendText}>
+              Temples ({temples.length})
+            </Text>
           </View>
           <View style={styles.legendItem}>
-            <View
-              style={[
-                styles.legendDot,
-                {
-                  backgroundColor: Colors.primaryLight,
-                  opacity: 0.3,
-                  width: 12,
-                  height: 12,
-                  borderRadius: 6,
-                },
-              ]}
-            />
-            <Text style={styles.legendText}>South India coverage</Text>
+            <View style={[styles.legendDot, { backgroundColor: '#C45B28' }]} />
+            <Text style={styles.legendText}>
+              Priests ({priests.length})
+            </Text>
           </View>
         </View>
       </ScrollView>
@@ -162,41 +226,44 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingTop: 56,
     paddingHorizontal: Spacing.xl,
-    paddingBottom: Spacing.md,
+    paddingBottom: Spacing.sm,
   },
-  headerTitle: {
-    ...Typography.label,
-    color: Colors.textSecondary,
+  filterRow: {
+    flexDirection: 'row',
+    paddingHorizontal: Spacing.xl,
+    gap: Spacing.sm,
+    marginBottom: Spacing.md,
+  },
+  filterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.xs,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs + 2,
+    borderRadius: Radius.full,
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+    borderColor: Colors.borderLight,
+  },
+  filterChipActive: {
+    borderColor: Colors.text,
+  },
+  filterDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  filterText: {
+    ...Typography.caption,
+    color: Colors.textTertiary,
+  },
+  filterTextActive: {
+    color: Colors.text,
+    fontWeight: '600',
   },
   content: {
     paddingHorizontal: Spacing.xl,
     paddingBottom: 40,
-  },
-  summaryRow: {
-    flexDirection: 'row',
-    backgroundColor: Colors.white,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.borderLight,
-    padding: Spacing.lg,
-    marginBottom: Spacing.lg,
-  },
-  summaryItem: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  summaryNumber: {
-    ...Typography.displayMedium,
-    color: Colors.primary,
-  },
-  summaryLabel: {
-    ...Typography.caption,
-    color: Colors.textTertiary,
-    marginTop: 2,
-  },
-  summaryDivider: {
-    width: 1,
-    backgroundColor: Colors.borderLight,
   },
   mapContainer: {
     alignItems: 'center',
@@ -204,58 +271,69 @@ const styles = StyleSheet.create({
     borderRadius: Radius.lg,
     borderWidth: 1,
     borderColor: Colors.borderLight,
-    padding: Spacing.md,
+    padding: Spacing.sm,
     marginBottom: Spacing.lg,
   },
-  selectedCard: {
+  card: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.white,
     borderRadius: Radius.md,
     borderWidth: 1,
-    borderColor: Colors.primary,
+    borderColor: Colors.borderLight,
     padding: Spacing.lg,
-    marginBottom: Spacing.lg,
+    marginBottom: Spacing.md,
+    gap: Spacing.md,
   },
-  selectedInfo: {
+  cardDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+  },
+  cardInfo: {
     flex: 1,
-    gap: 4,
+    gap: 3,
   },
-  selectedName: {
+  cardName: {
     ...Typography.subheading,
     color: Colors.text,
+    fontSize: 15,
   },
-  selectedDeity: {
-    ...Typography.bodySmall,
+  cardDeity: {
+    ...Typography.caption,
     color: Colors.primary,
   },
-  selectedMeta: {
+  cardMeta: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
   },
-  selectedLocation: {
+  cardMetaText: {
     ...Typography.caption,
     color: Colors.textTertiary,
   },
-  hint: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: Spacing.sm,
-    paddingVertical: Spacing.xl,
+  cardPrice: {
+    ...Typography.caption,
+    color: Colors.text,
+    fontWeight: '500',
+    marginLeft: Spacing.sm,
   },
-  hintText: {
+  hint: {
     ...Typography.bodySmall,
     color: Colors.textTertiary,
+    textAlign: 'center',
+    paddingVertical: Spacing.xl,
   },
   legend: {
-    gap: Spacing.sm,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: Spacing.xl,
+    paddingTop: Spacing.sm,
   },
   legendItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.sm,
+    gap: Spacing.xs,
   },
   legendDot: {
     width: 8,

@@ -18,6 +18,8 @@ export interface Priest {
   name: string;
   city: string;
   state: string;
+  latitude: number;
+  longitude: number;
   specializations: string[];
   languages: string[];
   experience: number; // years

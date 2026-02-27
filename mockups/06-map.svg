@@ -12,89 +12,113 @@
   <!-- Status bar -->
   <text x="32" y="20" font-size="12" font-weight="600" fill="#1A1A1A">9:41</text>
 
-  <!-- Header -->
+  <!-- Header: back arrow only (minimal) -->
   <path d="M38 62L30 70L38 78" stroke="#1A1A1A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="195" y="72" font-size="14" font-weight="500" fill="#6B6560" text-anchor="middle">Temple Map</text>
 
-  <!-- Summary stats card -->
-  <rect x="24" y="92" width="342" height="60" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
-  <text x="81" y="118" font-size="24" font-weight="600" fill="#C45B28" text-anchor="middle">20</text>
-  <text x="81" y="134" font-size="11" fill="#9B9590" text-anchor="middle">Temples</text>
-  <line x1="138" y1="104" x2="138" y2="140" stroke="#F0ECE8" stroke-width="1"/>
-  <text x="195" y="118" font-size="24" font-weight="600" fill="#C45B28" text-anchor="middle">5</text>
-  <text x="195" y="134" font-size="11" fill="#9B9590" text-anchor="middle">States</text>
-  <line x1="252" y1="104" x2="252" y2="140" stroke="#F0ECE8" stroke-width="1"/>
-  <text x="309" y="118" font-size="24" font-weight="600" fill="#C45B28" text-anchor="middle">12</text>
-  <text x="309" y="134" font-size="11" fill="#9B9590" text-anchor="middle">Cities</text>
+  <!-- Filter chips -->
+  <g transform="translate(24, 92)">
+    <!-- All (active) -->
+    <rect x="0" y="0" width="36" height="26" rx="13" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1"/>
+    <text x="18" y="17" font-size="11" font-weight="600" fill="#1A1A1A" text-anchor="middle">All</text>
+
+    <!-- Temples -->
+    <rect x="44" y="0" width="84" height="26" rx="13" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <circle cx="58" cy="13" r="3" fill="#1A3A5C"/>
+    <text x="67" y="17" font-size="11" fill="#9B9590">Temples</text>
+
+    <!-- Priests -->
+    <rect x="136" y="0" width="76" height="26" rx="13" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <circle cx="150" cy="13" r="3" fill="#C45B28"/>
+    <text x="159" y="17" font-size="11" fill="#9B9590">Priests</text>
+  </g>
 
   <!-- Map container -->
-  <rect x="24" y="164" width="342" height="410" rx="14" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <rect x="24" y="130" width="342" height="440" rx="14" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
 
-  <!-- Simplified India outline -->
-  <g transform="translate(40, 170)">
+  <!-- India outline (simplified) -->
+  <g transform="translate(38, 134)">
     <path d="M110 25 L140 15 L165 30 L200 60 L218 65 L250 60 L260 55 L255 75 L240 90 L220 95 L215 88 L210 100 L200 115 L190 130 L185 140 L180 155 L178 170 L175 190 L170 205 L168 212 L165 208 L158 195 L152 185 L145 175 L138 160 L130 140 L118 120 L108 100 L100 85 L90 80 L80 90 L75 100 L85 120 L90 135 L95 145 L100 160 L110 25Z"
-          fill="#F0ECE8" stroke="#E8E4DF" stroke-width="1.2"/>
+          fill="#F0EDE8" stroke="#D8D3CC" stroke-width="1.2"/>
 
     <!-- South India highlight -->
     <path d="M108 100 L180 100 L200 115 L190 130 L185 140 L180 155 L178 170 L175 190 L170 205 L168 212 L165 208 L158 195 L152 185 L145 175 L138 160 L130 140 L118 120 L108 100Z"
-          fill="#E8854A" opacity="0.12" stroke="#C45B28" stroke-width="0.8"/>
+          fill="#E8E4DF" opacity="0.6" stroke="#C8C2BA" stroke-width="0.8"/>
 
-    <!-- Temple pins -->
-    <!-- Hyderabad (Telangana) -->
-    <circle cx="145" cy="125" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Tirupati (AP) - SELECTED -->
-    <circle cx="158" cy="152" r="6" fill="#8B3A12" stroke="#FFFFFF" stroke-width="2"/>
-    <text x="158" y="142" font-size="8" font-weight="600" fill="#1A1A1A" text-anchor="middle">Tirupati</text>
-    <!-- Vijayawada (AP) -->
-    <circle cx="162" cy="138" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Srisailam (AP) -->
-    <circle cx="150" cy="140" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Madurai (TN) -->
-    <circle cx="157" cy="180" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Rameswaram (TN) -->
-    <circle cx="160" cy="192" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Thanjavur (TN) -->
-    <circle cx="162" cy="170" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Mysore (Karnataka) -->
-    <circle cx="140" cy="170" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Mumbai (Maharashtra) -->
-    <circle cx="105" cy="110" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Hampi (Karnataka) -->
-    <circle cx="132" cy="148" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Warangal (Telangana) -->
-    <circle cx="155" cy="118" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Nashik (Maharashtra) -->
-    <circle cx="112" cy="100" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Chidambaram (TN) -->
-    <circle cx="165" cy="165" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
-    <!-- Dharmasthala (Karnataka) -->
-    <circle cx="128" cy="165" r="4" fill="#C45B28" stroke="#FFFFFF" stroke-width="1.5"/>
+    <!-- TEMPLE PINS (dark blue) -->
+    <!-- Hyderabad -->
+    <circle cx="145" cy="125" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Tirupati (SELECTED) -->
+    <circle cx="158" cy="152" r="7" fill="#0D2240" stroke="#FFF" stroke-width="2.5"/>
+    <text x="158" y="141" font-size="8" font-weight="700" fill="#0D2240" text-anchor="middle">Tirupati</text>
+    <!-- Vijayawada -->
+    <circle cx="162" cy="138" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Srisailam -->
+    <circle cx="150" cy="140" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Madurai -->
+    <circle cx="157" cy="180" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Rameswaram -->
+    <circle cx="160" cy="192" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Thanjavur -->
+    <circle cx="162" cy="170" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Mysore -->
+    <circle cx="140" cy="170" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Mumbai -->
+    <circle cx="105" cy="110" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Hampi -->
+    <circle cx="132" cy="148" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Warangal -->
+    <circle cx="155" cy="118" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Nashik -->
+    <circle cx="112" cy="100" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Chidambaram -->
+    <circle cx="165" cy="165" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Dharmasthala -->
+    <circle cx="128" cy="165" r="4.5" fill="#1A3A5C" stroke="#FFF" stroke-width="1.5"/>
+
+    <!-- PRIEST PINS (saffron) -->
+    <!-- Hyderabad priest -->
+    <circle cx="148" cy="122" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Warangal priest -->
+    <circle cx="158" cy="116" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Tirupati priest -->
+    <circle cx="155" cy="155" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Vijayawada priest -->
+    <circle cx="165" cy="135" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Madurai priest -->
+    <circle cx="154" cy="183" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Thanjavur priest -->
+    <circle cx="159" cy="173" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Mysore priest -->
+    <circle cx="137" cy="173" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Mumbai priest -->
+    <circle cx="102" cy="113" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
+    <!-- Nashik priest -->
+    <circle cx="115" cy="97" r="4" fill="#C45B28" stroke="#FFF" stroke-width="1.5"/>
   </g>
 
   <!-- Selected temple card -->
-  <rect x="24" y="588" width="342" height="88" rx="10" fill="#FFFFFF" stroke="#C45B28" stroke-width="1"/>
-  <text x="40" y="612" font-size="16" font-weight="600" fill="#1A1A1A">Tirumala Venkateswara Temple</text>
-  <text x="40" y="632" font-size="13" fill="#C45B28">Lord Venkateswara</text>
-  <g transform="translate(40, 642)">
-    <path d="M4 9c0-2.5 2-4 3.5-4s3.5 1.5 3.5 4-3.5 6.5-3.5 6.5-3.5-4-3.5-6.5z" stroke="#9B9590" stroke-width="0.8" fill="none" transform="scale(0.6)"/>
-    <text x="10" y="8" font-size="11" fill="#9B9590">Tirupati, Andhra Pradesh</text>
+  <rect x="24" y="584" width="342" height="72" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 596)">
+    <circle cx="5" cy="14" r="5" fill="#1A3A5C"/>
+    <text x="20" y="10" font-size="15" font-weight="600" fill="#1A1A1A">Tirumala Venkateswara Temple</text>
+    <text x="20" y="26" font-size="11" fill="#C45B28">Lord Venkateswara</text>
+    <g transform="translate(20, 34)">
+      <path d="M4 8c0-2.5 2-4 3.5-4s3.5 1.5 3.5 4-3.5 6.5-3.5 6.5-3.5-4-3.5-6.5z" stroke="#9B9590" stroke-width="0.7" fill="none" transform="scale(0.55)"/>
+      <text x="10" y="7" font-size="11" fill="#9B9590">Tirupati, Andhra Pradesh</text>
+    </g>
   </g>
-  <g transform="translate(40, 658)">
-    <circle cx="5" cy="5" r="4.5" stroke="#9B9590" stroke-width="0.8" fill="none"/>
-    <path d="M5 2.5v2.8l2 1.5" stroke="#9B9590" stroke-width="0.8" fill="none" stroke-linecap="round"/>
-    <text x="14" y="9" font-size="11" fill="#9B9590">3:00 AM - 12:00 AM</text>
-  </g>
-  <!-- Chevron -->
-  <path d="M346 632l5 5-5 5" stroke="#9B9590" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M346 620l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Hint -->
+  <text x="195" y="688" font-size="13" fill="#9B9590" text-anchor="middle">Tap a pin to see details</text>
 
   <!-- Legend -->
-  <g transform="translate(24, 700)">
-    <circle cx="6" cy="6" r="4" fill="#C45B28"/>
-    <text x="18" y="10" font-size="11" fill="#9B9590">Temple location</text>
-  </g>
-  <g transform="translate(24, 722)">
-    <circle cx="6" cy="6" r="6" fill="#E8854A" opacity="0.3"/>
-    <text x="18" y="10" font-size="11" fill="#9B9590">South India coverage</text>
+  <g transform="translate(112, 716)">
+    <circle cx="4" cy="4" r="4" fill="#1A3A5C"/>
+    <text x="14" y="8" font-size="11" fill="#9B9590">Temples (20)</text>
+
+    <circle cx="110" cy="4" r="4" fill="#C45B28"/>
+    <text x="120" y="8" font-size="11" fill="#9B9590">Priests (12)</text>
   </g>
 
   <!-- Home indicator -->

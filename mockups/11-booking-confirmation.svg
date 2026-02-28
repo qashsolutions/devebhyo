@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="390" height="844" fill="#FAFAF8"/>
+
+  <!-- Status bar -->
+  <text x="32" y="20" font-size="12" font-weight="600" fill="#1A1A1A">9:41</text>
+
+  <!-- Confirmation icon -->
+  <circle cx="195" cy="120" r="44" fill="#E8F5EE"/>
+  <path d="M175 120l12 12 26-26" stroke="#2E7D52" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Title -->
+  <text x="195" y="200" font-size="24" font-weight="700" fill="#1A1A1A" text-anchor="middle" letter-spacing="-0.3">Booking Confirmed</text>
+  <text x="195" y="224" font-size="14" fill="#6B6560" text-anchor="middle">Your seva has been successfully booked</text>
+
+  <!-- Booking ID -->
+  <rect x="130" y="240" width="130" height="28" rx="14" fill="#FFFFFF" stroke="#E8E4DF" stroke-width="1"/>
+  <text x="195" y="259" font-size="11" font-weight="500" fill="#9B9590" text-anchor="middle" letter-spacing="0.5">ID: DBY-2026-4821</text>
+
+  <!-- Details card -->
+  <rect x="24" y="290" width="342" height="220" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Temple -->
+  <g transform="translate(40, 312)">
+    <text x="0" y="0" font-size="10" fill="#9B9590" letter-spacing="0.8">TEMPLE</text>
+    <text x="0" y="18" font-size="15" font-weight="600" fill="#1A1A1A">Tirumala Venkateswara Temple</text>
+  </g>
+  <line x1="40" y1="340" x2="350" y2="340" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Seva -->
+  <g transform="translate(40, 358)">
+    <text x="0" y="0" font-size="10" fill="#9B9590" letter-spacing="0.8">SEVA</text>
+    <text x="0" y="18" font-size="15" font-weight="600" fill="#1A1A1A">Abhishekam</text>
+    <text x="0" y="34" font-size="11" fill="#9B9590">Sacred bathing ritual of the deity</text>
+  </g>
+  <line x1="40" y1="402" x2="350" y2="402" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Date & Time -->
+  <g transform="translate(40, 420)">
+    <text x="0" y="0" font-size="10" fill="#9B9590" letter-spacing="0.8">DATE &amp; TIME</text>
+    <text x="0" y="18" font-size="15" font-weight="600" fill="#1A1A1A">1 March 2026, 8:00 AM</text>
+  </g>
+  <line x1="40" y1="448" x2="350" y2="448" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Amount paid -->
+  <g transform="translate(40, 466)">
+    <text x="0" y="0" font-size="10" fill="#9B9590" letter-spacing="0.8">AMOUNT PAID</text>
+    <text x="0" y="20" font-size="22" font-weight="600" fill="#2E7D52">&#8377;210</text>
+  </g>
+
+  <!-- Add to Calendar button (secondary) -->
+  <rect x="24" y="536" width="342" height="48" rx="10" fill="none" stroke="#C45B28" stroke-width="1.5"/>
+  <!-- Calendar icon -->
+  <rect x="150" y="550" width="16" height="14" rx="2" stroke="#C45B28" stroke-width="1.2" fill="none"/>
+  <line x1="154" y1="548" x2="154" y2="552" stroke="#C45B28" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="162" y1="548" x2="162" y2="552" stroke="#C45B28" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="150" y1="556" x2="166" y2="556" stroke="#C45B28" stroke-width="0.8"/>
+  <text x="174" y="564" font-size="14" font-weight="600" fill="#C45B28">Add to Calendar</text>
+
+  <!-- Share with Family button (secondary) -->
+  <rect x="24" y="596" width="342" height="48" rx="10" fill="none" stroke="#E8E4DF" stroke-width="1.5"/>
+  <!-- Share icon -->
+  <circle cx="158" cy="614" r="2.5" stroke="#6B6560" stroke-width="1.2" fill="none"/>
+  <circle cx="150" cy="620" r="2.5" stroke="#6B6560" stroke-width="1.2" fill="none"/>
+  <circle cx="158" cy="626" r="2.5" stroke="#6B6560" stroke-width="1.2" fill="none"/>
+  <line x1="155.5" y1="615.5" x2="152.5" y2="618.5" stroke="#6B6560" stroke-width="1"/>
+  <line x1="155.5" y1="624.5" x2="152.5" y2="621.5" stroke="#6B6560" stroke-width="1"/>
+  <text x="170" y="620" font-size="14" font-weight="500" fill="#6B6560">Share with Family</text>
+
+  <!-- View My Bookings button (primary) -->
+  <rect x="24" y="660" width="166" height="48" rx="10" fill="#C45B28"/>
+  <text x="107" y="689" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">My Bookings</text>
+
+  <!-- Back to Home button -->
+  <rect x="200" y="660" width="166" height="48" rx="10" fill="#1A1A1A"/>
+  <text x="283" y="689" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">Back to Home</text>
+
+  <!-- Home indicator -->
+  <rect x="147" y="822" width="96" height="4" rx="2" fill="#1A1A1A" opacity="0.2"/>
+</svg>

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="390" height="844" fill="#FAFAF8"/>
+
+  <!-- Status bar -->
+  <text x="32" y="20" font-size="12" font-weight="600" fill="#1A1A1A">9:41</text>
+
+  <!-- Header -->
+  <path d="M38 62L30 70L38 78" stroke="#1A1A1A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="195" y="72" font-size="14" font-weight="500" fill="#6B6560" text-anchor="middle">Manage Sevas</text>
+  <!-- Add button -->
+  <circle cx="354" cy="70" r="14" fill="#C45B28"/>
+  <line x1="348" y1="70" x2="360" y2="70" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <line x1="354" y1="64" x2="354" y2="76" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Summary -->
+  <rect x="24" y="96" width="342" height="44" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <text x="40" y="123" font-size="13" fill="#6B6560"><tspan font-weight="600" fill="#1A1A1A">6</tspan> sevas active  ·  <tspan font-weight="600" fill="#1A1A1A">1</tspan> paused</text>
+
+  <!-- Section: Active Sevas -->
+  <text x="28" y="170" font-size="11" fill="#9B9590" letter-spacing="1">ACTIVE SEVAS</text>
+
+  <!-- Seva 1: Archana -->
+  <rect x="24" y="180" width="342" height="76" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 198)">
+    <text x="0" y="4" font-size="15" font-weight="600" fill="#1A1A1A">Archana</text>
+    <text x="0" y="22" font-size="12" fill="#9B9590">Recitation of 108 names of the deity</text>
+    <text x="0" y="40" font-size="13" font-weight="500" fill="#C45B28">&#8377;50</text>
+    <!-- Toggle ON -->
+    <rect x="264" y="-2" width="40" height="22" rx="11" fill="#2E7D52"/>
+    <circle cx="293" cy="9" r="8" fill="#FFFFFF"/>
+    <!-- Edit chevron -->
+    <path d="M318 8l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Seva 2: Abhishekam -->
+  <rect x="24" y="268" width="342" height="76" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 286)">
+    <text x="0" y="4" font-size="15" font-weight="600" fill="#1A1A1A">Abhishekam</text>
+    <text x="0" y="22" font-size="12" fill="#9B9590">Sacred bathing ritual of the deity</text>
+    <text x="0" y="40" font-size="13" font-weight="500" fill="#C45B28">&#8377;200</text>
+    <!-- Toggle ON -->
+    <rect x="264" y="-2" width="40" height="22" rx="11" fill="#2E7D52"/>
+    <circle cx="293" cy="9" r="8" fill="#FFFFFF"/>
+    <path d="M318 8l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Seva 3: Homam -->
+  <rect x="24" y="356" width="342" height="76" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 374)">
+    <text x="0" y="4" font-size="15" font-weight="600" fill="#1A1A1A">Homam</text>
+    <text x="0" y="22" font-size="12" fill="#9B9590">Fire ritual for blessings and prosperity</text>
+    <text x="0" y="40" font-size="13" font-weight="500" fill="#C45B28">&#8377;500</text>
+    <!-- Toggle ON -->
+    <rect x="264" y="-2" width="40" height="22" rx="11" fill="#2E7D52"/>
+    <circle cx="293" cy="9" r="8" fill="#FFFFFF"/>
+    <path d="M318 8l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Seva 4: Sahasranama -->
+  <rect x="24" y="444" width="342" height="76" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 462)">
+    <text x="0" y="4" font-size="15" font-weight="600" fill="#1A1A1A">Sahasranama Archana</text>
+    <text x="0" y="22" font-size="12" fill="#9B9590">Recitation of 1008 names</text>
+    <text x="0" y="40" font-size="13" font-weight="500" fill="#C45B28">&#8377;150</text>
+    <!-- Toggle ON -->
+    <rect x="264" y="-2" width="40" height="22" rx="11" fill="#2E7D52"/>
+    <circle cx="293" cy="9" r="8" fill="#FFFFFF"/>
+    <path d="M318 8l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Section: Paused -->
+  <text x="28" y="550" font-size="11" fill="#9B9590" letter-spacing="1">PAUSED</text>
+
+  <!-- Seva 5: Special Event (paused) -->
+  <rect x="24" y="560" width="342" height="76" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1" opacity="0.7"/>
+  <g transform="translate(40, 578)" opacity="0.7">
+    <text x="0" y="4" font-size="15" font-weight="600" fill="#1A1A1A">Karthik Deepotsavam</text>
+    <text x="0" y="22" font-size="12" fill="#9B9590">Special event -- seasonal</text>
+    <text x="0" y="40" font-size="13" font-weight="500" fill="#9B9590">&#8377;100</text>
+    <!-- Toggle OFF -->
+    <rect x="264" y="-2" width="40" height="22" rx="11" fill="#E8E4DF"/>
+    <circle cx="275" cy="9" r="8" fill="#FFFFFF"/>
+    <path d="M318 8l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Hint text -->
+  <text x="195" y="672" font-size="11" fill="#9B9590" text-anchor="middle">Tap + to add a new seva. Toggle to pause/resume.</text>
+
+  <!-- Home indicator -->
+  <rect x="147" y="822" width="96" height="4" rx="2" fill="#1A1A1A" opacity="0.2"/>
+</svg>

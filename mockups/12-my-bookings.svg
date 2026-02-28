@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="390" height="844" fill="#FAFAF8"/>
+
+  <!-- Status bar -->
+  <text x="32" y="20" font-size="12" font-weight="600" fill="#1A1A1A">9:41</text>
+
+  <!-- Header -->
+  <path d="M38 62L30 70L38 78" stroke="#1A1A1A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="195" y="72" font-size="14" font-weight="500" fill="#6B6560" text-anchor="middle">My Bookings</text>
+
+  <!-- Tab chips -->
+  <g transform="translate(24, 94)">
+    <!-- Upcoming (active) -->
+    <rect x="0" y="0" width="100" height="30" rx="15" fill="#C45B28"/>
+    <text x="50" y="20" font-size="13" font-weight="500" fill="#FFFFFF" text-anchor="middle">Upcoming</text>
+    <!-- Past -->
+    <rect x="112" y="0" width="64" height="30" rx="15" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="144" y="20" font-size="13" font-weight="500" fill="#6B6560" text-anchor="middle">Past</text>
+  </g>
+
+  <!-- Section label -->
+  <text x="28" y="158" font-size="11" fill="#9B9590" letter-spacing="1">UPCOMING</text>
+
+  <!-- Booking card 1 -->
+  <rect x="24" y="168" width="342" height="112" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 186)">
+    <!-- Status badge: confirmed -->
+    <rect x="224" y="-6" width="82" height="22" rx="11" fill="#E8F5EE"/>
+    <text x="265" y="8" font-size="10" font-weight="500" fill="#2E7D52" text-anchor="middle">Confirmed</text>
+    <!-- Temple dot -->
+    <circle cx="4" cy="6" r="4" fill="#1A3A5C"/>
+    <text x="16" y="10" font-size="14" font-weight="600" fill="#1A1A1A">Tirumala Venkateswara</text>
+    <text x="16" y="28" font-size="13" fill="#6B6560">Abhishekam</text>
+    <!-- Date -->
+    <text x="16" y="50" font-size="12" fill="#9B9590">1 Mar 2026, 8:00 AM</text>
+    <!-- Amount -->
+    <text x="16" y="70" font-size="13" font-weight="600" fill="#C45B28">&#8377;210</text>
+    <!-- Chevron -->
+    <path d="M310 36l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Booking card 2 -->
+  <rect x="24" y="296" width="342" height="112" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 314)">
+    <!-- Status badge: confirmed -->
+    <rect x="224" y="-6" width="82" height="22" rx="11" fill="#E8F5EE"/>
+    <text x="265" y="8" font-size="10" font-weight="500" fill="#2E7D52" text-anchor="middle">Confirmed</text>
+    <!-- Priest dot -->
+    <circle cx="4" cy="6" r="4" fill="#C45B28"/>
+    <text x="16" y="10" font-size="14" font-weight="600" fill="#1A1A1A">Pandit Raghunath Sharma</text>
+    <text x="16" y="28" font-size="13" fill="#6B6560">Grihapravesam Pooja</text>
+    <!-- Date -->
+    <text x="16" y="50" font-size="12" fill="#9B9590">5 Mar 2026, 10:00 AM</text>
+    <!-- Amount -->
+    <text x="16" y="70" font-size="13" font-weight="600" fill="#C45B28">&#8377;3,500</text>
+    <!-- Chevron -->
+    <path d="M310 36l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Booking card 3 -->
+  <rect x="24" y="424" width="342" height="112" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 442)">
+    <!-- Status badge: pending -->
+    <rect x="224" y="-6" width="82" height="22" rx="11" fill="#FFF8E7"/>
+    <text x="265" y="8" font-size="10" font-weight="500" fill="#B8860B" text-anchor="middle">Pending</text>
+    <!-- Temple dot -->
+    <circle cx="4" cy="6" r="4" fill="#1A3A5C"/>
+    <text x="16" y="10" font-size="14" font-weight="600" fill="#1A1A1A">Birla Mandir</text>
+    <text x="16" y="28" font-size="13" fill="#6B6560">Archana</text>
+    <!-- Date -->
+    <text x="16" y="50" font-size="12" fill="#9B9590">12 Mar 2026, 6:30 AM</text>
+    <!-- Amount -->
+    <text x="16" y="70" font-size="13" font-weight="600" fill="#C45B28">&#8377;50</text>
+    <!-- Chevron -->
+    <path d="M310 36l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Section label: Past preview -->
+  <text x="28" y="568" font-size="11" fill="#9B9590" letter-spacing="1">PAST</text>
+
+  <!-- Past booking (faded) -->
+  <rect x="24" y="578" width="342" height="90" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1" opacity="0.7"/>
+  <g transform="translate(40, 596)" opacity="0.7">
+    <rect x="224" y="-6" width="82" height="22" rx="11" fill="#F0ECE8"/>
+    <text x="265" y="8" font-size="10" font-weight="500" fill="#9B9590" text-anchor="middle">Completed</text>
+    <circle cx="4" cy="6" r="4" fill="#1A3A5C"/>
+    <text x="16" y="10" font-size="14" font-weight="600" fill="#1A1A1A">Yadagirigutta Temple</text>
+    <text x="16" y="28" font-size="13" fill="#6B6560">Abhishekam</text>
+    <text x="16" y="48" font-size="12" fill="#9B9590">15 Feb 2026, 7:00 AM  ·  &#8377;200</text>
+    <path d="M310 26l5 5-5 5" stroke="#9B9590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Fade gradient at bottom -->
+  <defs>
+    <linearGradient id="fadeBookings" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFAF8" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FAFAF8" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="700" width="390" height="120" fill="url(#fadeBookings)"/>
+
+  <!-- Home indicator -->
+  <rect x="147" y="822" width="96" height="4" rx="2" fill="#1A1A1A" opacity="0.2"/>
+</svg>

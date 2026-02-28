@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="390" height="844" fill="#FAFAF8"/>
+
+  <!-- Status bar -->
+  <text x="32" y="20" font-size="12" font-weight="600" fill="#1A1A1A">9:41</text>
+
+  <!-- Header with priest identity -->
+  <g transform="translate(24, 48)">
+    <!-- Priest avatar circle -->
+    <circle cx="22" cy="22" r="22" fill="#FAFAF8" stroke="#E8E4DF" stroke-width="1"/>
+    <text x="22" y="28" font-size="16" font-weight="600" fill="#C45B28" text-anchor="middle">RS</text>
+    <!-- Priest name -->
+    <text x="54" y="16" font-size="16" font-weight="600" fill="#1A1A1A">Pandit Raghunath Sharma</text>
+    <text x="54" y="34" font-size="12" fill="#9B9590">Hyderabad  ·  Vedic Rituals</text>
+  </g>
+
+  <!-- Settings gear -->
+  <circle cx="354" cy="70" r="4" stroke="#9B9590" stroke-width="1.2" fill="none"/>
+  <path d="M354 62v2m0 12v2m-6.9-3.5l1.4-1.4m11-11l1.4-1.4m-16 6.4h2m12 0h2m-3.5 6.9l-1.4-1.4m-11-11l-1.4-1.4" stroke="#9B9590" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Stats row (3 cards) -->
+  <g transform="translate(24, 104)">
+    <!-- Today -->
+    <rect x="0" y="0" width="106" height="72" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="14" y="24" font-size="24" font-weight="700" fill="#C45B28">3</text>
+    <text x="14" y="42" font-size="10" fill="#9B9590" letter-spacing="0.5">TODAY'S</text>
+    <text x="14" y="56" font-size="10" fill="#9B9590" letter-spacing="0.5">SESSIONS</text>
+
+    <!-- This Month -->
+    <rect x="118" y="0" width="106" height="72" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="132" y="24" font-size="24" font-weight="700" fill="#1A1A1A">18</text>
+    <text x="132" y="42" font-size="10" fill="#9B9590" letter-spacing="0.5">THIS MONTH</text>
+    <text x="132" y="56" font-size="10" fill="#9B9590" letter-spacing="0.5">COMPLETED</text>
+
+    <!-- Rating -->
+    <rect x="236" y="0" width="106" height="72" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="250" y="24" font-size="24" font-weight="700" fill="#B8860B">4.9</text>
+    <path d="M290 10l2 4.4 4.7.5-3.4 3.2.8 4.6L290 20.2l-4.1 2.5.8-4.6-3.4-3.2 4.7-.5L290 10z" fill="#B8860B"/>
+    <text x="250" y="42" font-size="10" fill="#9B9590" letter-spacing="0.5">RATING</text>
+    <text x="250" y="56" font-size="10" fill="#9B9590" letter-spacing="0.5">(142 reviews)</text>
+  </g>
+
+  <!-- Earnings card -->
+  <rect x="24" y="192" width="342" height="56" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 210)">
+    <text x="0" y="0" font-size="10" fill="#9B9590" letter-spacing="0.8">THIS MONTH EARNINGS</text>
+    <text x="0" y="22" font-size="20" font-weight="700" fill="#2E7D52">&#8377;54,000</text>
+    <text x="120" y="22" font-size="12" fill="#9B9590">from 18 sessions</text>
+  </g>
+
+  <!-- Pending Requests banner -->
+  <rect x="24" y="264" width="342" height="44" rx="10" fill="#FFF8E7" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 280)">
+    <!-- Bell icon -->
+    <path d="M8 1c-3 0-5.5 2.5-5.5 5.5v3L0 12h16l-2.5-2.5v-3C13.5 3.5 11 1 8 1z" stroke="#B8860B" stroke-width="1.2" fill="none" stroke-linejoin="round" transform="scale(0.8)"/>
+    <circle cx="6.4" cy="12.5" r="1.5" fill="#B8860B" transform="scale(0.8)"/>
+    <text x="20" y="10" font-size="13" font-weight="500" fill="#B8860B">2 new booking requests</text>
+    <path d="M306 4l5 5-5 5" stroke="#B8860B" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Today's Schedule section -->
+  <text x="28" y="338" font-size="11" fill="#9B9590" letter-spacing="1">TODAY'S SCHEDULE</text>
+  <rect x="24" y="348" width="342" height="164" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Session 1 -->
+  <g transform="translate(40, 368)">
+    <rect x="0" y="-6" width="56" height="22" rx="4" fill="#E8F5EE"/>
+    <text x="28" y="8" font-size="10" font-weight="500" fill="#2E7D52" text-anchor="middle">9:00 AM</text>
+    <text x="68" y="4" font-size="14" font-weight="500" fill="#1A1A1A">Grihapravesam</text>
+    <text x="68" y="20" font-size="11" fill="#9B9590">Suresh Kumar  ·  Jubilee Hills</text>
+    <!-- Status: confirmed -->
+    <rect x="248" y="-4" width="58" height="20" rx="10" fill="#E8F5EE"/>
+    <text x="277" y="9" font-size="9" font-weight="500" fill="#2E7D52" text-anchor="middle">Done</text>
+  </g>
+  <line x1="40" y1="400" x2="350" y2="400" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Session 2 -->
+  <g transform="translate(40, 416)">
+    <rect x="0" y="-6" width="62" height="22" rx="4" fill="#FFF8E7"/>
+    <text x="31" y="8" font-size="10" font-weight="500" fill="#B8860B" text-anchor="middle">11:30 AM</text>
+    <text x="74" y="4" font-size="14" font-weight="500" fill="#1A1A1A">Satyanarayana Pooja</text>
+    <text x="74" y="20" font-size="11" fill="#9B9590">Priya Reddy  ·  Banjara Hills</text>
+    <!-- Status: upcoming -->
+    <rect x="230" y="-4" width="76" height="20" rx="10" fill="#FFF8E7"/>
+    <text x="268" y="9" font-size="9" font-weight="500" fill="#B8860B" text-anchor="middle">In 2 hours</text>
+  </g>
+  <line x1="40" y1="448" x2="350" y2="448" stroke="#F0ECE8" stroke-width="1"/>
+
+  <!-- Session 3 -->
+  <g transform="translate(40, 464)">
+    <rect x="0" y="-6" width="52" height="22" rx="4" fill="#FAFAF8" stroke="#E8E4DF" stroke-width="0.5"/>
+    <text x="26" y="8" font-size="10" font-weight="500" fill="#9B9590" text-anchor="middle">4:00 PM</text>
+    <text x="64" y="4" font-size="14" font-weight="500" fill="#1A1A1A">Navagraha Homam</text>
+    <text x="64" y="20" font-size="11" fill="#9B9590">Venkat Krishna  ·  Kukatpally</text>
+    <rect x="230" y="-4" width="76" height="20" rx="10" fill="#FAFAF8" stroke="#E8E4DF" stroke-width="0.5"/>
+    <text x="268" y="9" font-size="9" font-weight="500" fill="#9B9590" text-anchor="middle">Later today</text>
+  </g>
+
+  <!-- Quick Actions -->
+  <text x="28" y="542" font-size="11" fill="#9B9590" letter-spacing="1">QUICK ACTIONS</text>
+
+  <g transform="translate(24, 554)">
+    <!-- My Availability -->
+    <rect x="0" y="0" width="166" height="48" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="83" y="29" font-size="13" font-weight="500" fill="#1A1A1A" text-anchor="middle">My Availability</text>
+    <!-- Booking Requests -->
+    <rect x="176" y="0" width="166" height="48" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+    <text x="259" y="29" font-size="13" font-weight="500" fill="#1A1A1A" text-anchor="middle">Requests (2)</text>
+  </g>
+
+  <!-- Recent reviews -->
+  <text x="28" y="634" font-size="11" fill="#9B9590" letter-spacing="1">RECENT REVIEWS</text>
+  <rect x="24" y="644" width="342" height="80" rx="10" fill="#FFFFFF" stroke="#F0ECE8" stroke-width="1"/>
+  <g transform="translate(40, 662)">
+    <!-- Stars -->
+    <g transform="translate(0, -2)">
+      <path d="M5 0l1.5 3.3 3.5.4-2.5 2.4.6 3.4L5 7.8 1.5 9.5l.6-3.4L0 3.7l3.5-.4L5 0z" fill="#B8860B"/>
+      <path d="M5 0l1.5 3.3 3.5.4-2.5 2.4.6 3.4L5 7.8 1.5 9.5l.6-3.4L0 3.7l3.5-.4L5 0z" fill="#B8860B" transform="translate(12, 0)"/>
+      <path d="M5 0l1.5 3.3 3.5.4-2.5 2.4.6 3.4L5 7.8 1.5 9.5l.6-3.4L0 3.7l3.5-.4L5 0z" fill="#B8860B" transform="translate(24, 0)"/>
+      <path d="M5 0l1.5 3.3 3.5.4-2.5 2.4.6 3.4L5 7.8 1.5 9.5l.6-3.4L0 3.7l3.5-.4L5 0z" fill="#B8860B" transform="translate(36, 0)"/>
+      <path d="M5 0l1.5 3.3 3.5.4-2.5 2.4.6 3.4L5 7.8 1.5 9.5l.6-3.4L0 3.7l3.5-.4L5 0z" fill="#B8860B" transform="translate(48, 0)"/>
+    </g>
+    <text x="66" y="6" font-size="11" fill="#9B9590">Suresh Kumar  ·  2 hours ago</text>
+    <text x="0" y="26" font-size="13" fill="#6B6560">"Very knowledgeable and patient.</text>
+    <text x="0" y="42" font-size="13" fill="#6B6560"> Conducted the pooja beautifully."</text>
+  </g>
+
+  <!-- Home indicator -->
+  <rect x="147" y="822" width="96" height="4" rx="2" fill="#1A1A1A" opacity="0.2"/>
+</svg>

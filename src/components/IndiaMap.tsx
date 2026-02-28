@@ -18,6 +18,8 @@ interface IndiaMapProps {
   selectedPinId?: string;
   onPinPress?: (id: string) => void;
   highlightedStates?: string[];
+  activeState?: string;
+  onStatePress?: (state: string) => void;
 }
 
 const PIN_COLORS: Record<PinType, string> = {
@@ -58,6 +60,8 @@ const STATE_PATHS: Record<string, string> = {
   'Maharashtra': `M426.8,620.2L419.3,628.7L425.5,657.0L417.5,660.0L423.1,666.4L418.0,675.5L434.9,688.2L430.0,694.7L424.0,690.6L417.7,696.2L413.6,715.2L408.1,716.7L400.8,711.1L403.5,690.5L396.8,683.4L386.3,687.0L378.4,683.0L376.7,688.5L365.0,677.6L346.7,672.0L346.8,688.2L342.4,696.3L331.4,694.1L327.8,704.0L334.2,711.5L322.4,721.4L320.8,730.6L314.4,730.0L313.1,724.7L305.7,735.6L300.4,734.4L299.1,744.1L293.1,744.7L291.4,752.5L285.7,749.7L279.2,755.6L280.9,765.7L265.5,765.3L255.4,759.8L256.8,778.1L243.4,778.5L241.5,782.5L231.6,779.0L231.1,785.1L220.6,792.3L215.8,789.0L209.0,793.1L211.0,803.0L216.9,804.5L211.5,820.9L200.5,826.5L194.9,819.7L187.7,821.6L176.0,793.2L173.6,765.5L163.3,730.8L168.1,732.7L162.4,728.3L160.7,712.6L166.0,705.7L158.6,706.2L153.5,674.0L161.4,660.6L171.7,666.9L180.0,661.5L181.0,642.8L190.9,648.2L197.8,641.8L196.3,633.0L185.5,626.2L193.5,626.1L201.9,614.7L211.0,612.6L194.8,614.2L193.1,602.2L214.4,594.5L219.6,608.0L244.0,617.9L271.2,618.7L271.7,626.3L277.4,629.6L289.1,625.3L295.0,610.5L311.4,604.5L320.5,606.7L322.7,612.5L316.4,612.5L318.6,618.5L334.0,618.2L348.8,609.8L351.1,613.9L367.9,614.5L367.3,610.6L379.1,606.0L387.0,607.6L388.6,612.4L413.3,609.6L418.1,618.4L426.8,620.2Z`,
 };
 
+export { STATE_PATHS };
+
 export function IndiaMap({
   width = 320,
   height = 400,
@@ -65,6 +69,8 @@ export function IndiaMap({
   selectedPinId,
   onPinPress,
   highlightedStates = [],
+  activeState,
+  onStatePress,
 }: IndiaMapProps) {
   const sortedPins = [...pins].sort((a, b) => {
     if (a.id === selectedPinId) return 1;
@@ -88,13 +94,14 @@ export function IndiaMap({
       {/* Highlighted onboarded states */}
       {highlightedStates.map((name) =>
         STATE_PATHS[name] ? (
-          <Path
-            key={name}
-            d={STATE_PATHS[name]}
-            fill="#DDD8D2"
-            stroke="#AAA5A0"
-            strokeWidth={1.5}
-          />
+          <G key={name} onPress={() => onStatePress?.(name)}>
+            <Path
+              d={STATE_PATHS[name]}
+              fill={activeState === name ? '#C9C2B8' : '#DDD8D2'}
+              stroke={activeState === name ? '#8A857F' : '#AAA5A0'}
+              strokeWidth={activeState === name ? 2.5 : 1.5}
+            />
+          </G>
         ) : null,
       )}
 
